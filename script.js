@@ -11,10 +11,7 @@ $(function() {
     // Helpers
     let randomRange = (min, max) => min + Math.random() * (max - min)
     let degreesToRads = (degrees) => degrees / 180 * Math.PI
-    let starSizes = () => {
-        let sizes = [ 0.2, 0.5, 0.75 ]
-        return sizes[Math.floor(Math.random() * sizes.length)]
-    }
+    let starSizes = () => randomRange(0.2, 0.9)
 
     // Configuration
     let starRadius = 3
@@ -62,18 +59,18 @@ $(function() {
             return Math.sqrt(this.vx * this.vx + this.vy * this.vy)
         },
 
-        getHeading: function() {
+        getDirection: function() {
             return Math.atan2(this.vy, this.vx)
         },
 
-        setHeading: function(heading) {
+        setDirection: function(heading) {
             let speed = this.getSpeed()
             this.vx = Math.cos(heading) * speed
             this.vy = Math.sin(heading) * speed
         },
 
         setSpeed: function(speed) {
-            let heading = this.getHeading()
+            let heading = this.getDirection()
             this.vx = Math.cos(heading) * speed
             this.vy = Math.sin(heading) * speed
         },
@@ -89,7 +86,7 @@ $(function() {
         let hashi = star.create(randomRange(0, width), randomRange(0, height), 0, 0)
             hashi.radius = starRadius * starSizes()
             hashi.setSpeed(starSpeed)
-            hashi.setHeading(degreesToRads(starDirection))
+            hashi.setDirection(degreesToRads(starDirection))
         stars.push(hashi)
     }
 
