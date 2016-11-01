@@ -133,9 +133,9 @@ $(function() {
                 drawStar(hashi)
 
                 if (hashi.x > width) hashi.x = 0
-                if (hashi.x < 0) hashi.x = width + 10
+                if (hashi.x < 0) hashi.x = width
                 if (hashi.y > height) hashi.y = 0
-                if (hashi.y < 0) hashi.y = height + 10
+                if (hashi.y < 0) hashi.y = height
             }
         }
 
