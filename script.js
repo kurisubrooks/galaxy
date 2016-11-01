@@ -15,21 +15,21 @@ $(function() {
 
     // Configuration
     let starRadius = 3
-    let starSpeed = 0.1
-    let starCount = randomRange(50, 300)
+    let starSpeed = 0.2
+    let starCount = randomRange(100, 300)
     let starDirection = 145
 
     // Star Generator
     let starColours = () => {
         let colours = [
-            "#BCECC9", // green/white   - Type W & O
-            "#BCE3EC", // blue          - Type B
-            "#FFFFFF", // white         - Type A
-            "#F7FAB5", // yellow/white  - Type F
-            "#E8DA3E", // yellow        - Type G (Sun)
-            "#E8C63E", // orange        - Type K
-            "#E8983E", // orange/red    - Type M
-            "#E8463E"  // red           - Type N & S
+            "188, 236, 201", // green/white   - Type W & O
+            "188, 227, 236", // blue          - Type B
+            "255, 255, 255", // white         - Type A
+            "247, 250, 181", // yellow/white  - Type F
+            "233, 220, 105", // yellow        - Type G (Sun)
+            "232, 198, 62",  // orange        - Type K
+            "232, 152, 62",  // orange/red    - Type M
+            "232, 70, 62"    // red           - Type N & S
         ]
 
         return colours[Math.floor(Math.random() * colours.length)]
@@ -41,17 +41,19 @@ $(function() {
         vx: 0,
         vy: 0,
         radius: 0,
+        opacity: undefined,
         colour: undefined,
         trail: undefined,
 
         create: function(x, y, speed, direction) {
             let star = Object.create(this)
-            star.x = x
-            star.y = y
-            star.vx = Math.cos(direction) * speed
-            star.vy = Math.sin(direction) * speed
-            star.colour = starColours()
-            star.trail = randomRange(0, 10)
+                star.x = x
+                star.y = y
+                star.vx = Math.cos(direction) * speed
+                star.vy = Math.sin(direction) * speed
+                star.opacity = Math.random()
+                star.colour = starColours()
+                star.trail = randomRange(0, 10)
             return star
         },
 
@@ -92,12 +94,13 @@ $(function() {
 
     // Draw Star
     let drawStar = (star) => {
-        ctx.fillStyle = star.colour
+        ctx.fillStyle = `rgba(${star.colour}, ${star.opacity})`
         ctx.shadowBlur = star.trail
-        ctx.shadowColor = star.colour
+        ctx.shadowColor = `rgba(${star.colour}, ${star.opacity})`
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2, false)
         ctx.fill()
+
         ctx.shadowBlur = 0
     }
 
