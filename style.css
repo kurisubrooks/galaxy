@@ -1,0 +1,30 @@
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: "Rubik", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: -webkit-radial-gradient(bottom ellipse, #1c2837 0%, #050608 100%);
+    background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+}
+
+canvas {
+    position: absolute;
+    z-index: -5;
+    height: 100%;
+    width: 100%;
+}
