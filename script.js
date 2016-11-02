@@ -1,6 +1,6 @@
 "use strict"
 
-$(function() {
+document.addEventListener("DOMContentLoaded", function() {
     let paused = false
     let canvas = document.getElementById("stars")
     let ctx = canvas.getContext("2d")
