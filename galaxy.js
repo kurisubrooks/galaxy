@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     let paused = false
-    let canvas = document.getElementById("stars")
+    let canvas = document.getElementById("galaxy")
     let ctx = canvas.getContext("2d")
     let width = canvas.width = window.innerWidth
     let height = canvas.height = window.innerHeight
