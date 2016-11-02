@@ -155,4 +155,4 @@ document.addEventListener("DOMContentLoaded", function() {
     window.onblur = () => {
         paused = true
     }
-})
+}, false)
